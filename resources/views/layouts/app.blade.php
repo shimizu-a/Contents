@@ -7,5 +7,7 @@
 
     <body>
         @yield('content')
+        @include('commons.error_contents')
+
     </body>
 </html>

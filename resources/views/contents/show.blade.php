@@ -5,7 +5,8 @@
 <!-- ここにページ毎のコンテンツを書く -->
 <h1>id = {{ $contents->id }} のタスク詳細ページ</h1>
     
-    <p>{{ $contents->content }}</p>
+    <p>タスク:{{ $contents->content }}</p>
+    <p>ステータス:{{ $contents->status }}</p>
     {!! link_to_route('contents.edit', 'このタスク編集', ['id' => $contents->id]) !!}
 
     {!! Form::model($contents, ['route' => ['contents.destroy', $contents->id], 'method' => 'delete']) !!}

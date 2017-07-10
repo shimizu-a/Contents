@@ -50,8 +50,15 @@ class ContentsController extends Controller
     public function store(Request $request)
     {
         //追加
+        
+        $this->validate($request, [
+            'content' => 'required|max:255',
+            'status' => 'required|max:255',
+        ]);
+
         $contents = new Contents;
         $contents->content = $request->content;
+        $contents->status = $request->status;   //追加
         $contents->save();
 
         return redirect('/');
@@ -101,8 +108,15 @@ class ContentsController extends Controller
     public function update(Request $request, $id)
     {
         //追加
+        
+        $this->validate($request, [
+            'content' => 'required|max:255',
+            'status' => 'required|max:255',
+        ]);
+        
         $contents= contents::find($id);
         $contents->content = $request->content;
+        $contents->status = $request->status;  //追加
         $contents->save();
 
         return redirect('/');
@@ -121,5 +135,6 @@ class ContentsController extends Controller
         $contents = contents::find($id);
         $contents->delete();
 
+    return redirect('/');
     }
 }
